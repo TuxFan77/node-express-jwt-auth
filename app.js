@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const PORT = process.env.PORT || 3000;
 
 const app = express();
 
@@ -18,7 +19,10 @@ mongoose
     useUnifiedTopology: true,
     useCreateIndex: true,
   })
-  .then(result => app.listen(3000))
+  .then(result => {
+    console.log(`Server running on http://localhost:${PORT}`);
+    app.listen(PORT);
+  })
   .catch(err => console.log(err));
 
 // routes
